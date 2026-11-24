@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "e4f8b2c1-9a72-4b36-a18d-f5e6d7c8b9a0",
+    "name": "DevPulse Notes API - SENAI",
+    "description": "Coleção completa de testes e consumo da API RESTful DevPulse Notes para a disciplina de Frameworks Front-End do SENAI (Prof. Me. Deivison S. Takatu). Cobre todos os verbos HTTP (GET, POST, PUT, DELETE), filtros de query, validações de payload e verificação de códigos de status HTTP (200, 201, 400, 404).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "notaIdCriada",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01. Informações e Health Check",
+      "item": [
+        {
+          "name": "GET / (Apresentação e Rotas)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Retorna status ONLINE\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.status).to.eql(\"ONLINE\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            },
+            "description": "Retorna metadados da API e lista de endpoints disponíveis."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/health (Métricas e Uptime)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Serviço está UP\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.status).to.eql(\"UP\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Verifica se o servidor está ativo, tempo de atividade e memória em uso."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02. Leitura de Notas (GET)",
+      "item": [
+        {
+          "name": "GET /api/notes (Listar Todas)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Payload contém array de notas\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.true;",
+                  "    pm.expect(jsonData.dados).to.be.an(\"array\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            },
+            "description": "Retorna o array completo de notas cadastradas em data.json."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notes?busca=cors (Filtro por Palavra-Chave)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Retorna itens filtrados\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?busca=cors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [
+                {
+                  "key": "busca",
+                  "value": "cors"
+                }
+              ]
+            },
+            "description": "Filtra notas que contenham o termo de busca no título ou no conteúdo."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notes?categoria=Prática (Filtro por Categoria)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Todas as notas retornadas pertencem à categoria Prática\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    jsonData.dados.forEach(function(nota) {",
+                  "        pm.expect(nota.categoria.toLowerCase()).to.eql(\"prática\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes?categoria=Prática",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "Prática"
+                }
+              ]
+            },
+            "description": "Filtra notas pertencentes exclusivamente à categoria informada."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notes/:id (Buscar por ID Existente)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Objeto retornado possui campos obrigatórios\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.dados).to.have.property(\"id\");",
+                  "    pm.expect(jsonData.dados).to.have.property(\"titulo\");",
+                  "    pm.expect(jsonData.dados).to.have.property(\"conteudo\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "1"]
+            },
+            "description": "Busca detalhes de uma única nota cadastrada."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notes/:id (ID Inexistente - Erro 404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "pm.test(\"Retorna erro explicativo\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.false;",
+                  "    pm.expect(jsonData.erro).to.include(\"não encontrada\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/id-que-nao-existe-9999",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "id-que-nao-existe-9999"]
+            },
+            "description": "Testa o comportamento de erro 404 ao buscar um recurso inexistente."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03. Criação de Notas (POST)",
+      "item": [
+        {
+          "name": "POST /api/notes (Criar com Sucesso - 201)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test(\"Nota foi criada e retornou ID\", function () {",
+                  "    pm.expect(jsonData.sucesso).to.be.true;",
+                  "    pm.expect(jsonData.dados.id).to.not.be.empty;",
+                  "});",
+                  "// Salva a variável de ambiente notaIdCriada para usar nos testes subsequentes de PUT e DELETE",
+                  "if (jsonData.dados && jsonData.dados.id) {",
+                  "    pm.collectionVariables.set(\"notaIdCriada\", jsonData.dados.id);",
+                  "    console.log(\"Salvo notaIdCriada:\", jsonData.dados.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Entendendo Middlewares no Express\",\n  \"conteudo\": \"Funções de middleware interceptam a requisição e a resposta, podendo executar códigos, alterar objetos e chamar o próximo middleware via next().\",\n  \"categoria\": \"Conceito\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            },
+            "description": "Cadastra uma nova anotação técnica e armazena dinamicamente o ID gerado na variável da coleção."
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/notes (Validação de Erro - 400 Bad Request)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "pm.test(\"Retorna mensagem de validação\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.false;",
+                  "    pm.expect(jsonData.erro).to.include(\"obrigatório\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Oi\",\n  \"conteudo\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes"]
+            },
+            "description": "Testa a validação da API ao enviar campos vazios ou com menos de 3 caracteres."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04. Atualização de Notas (PUT)",
+      "item": [
+        {
+          "name": "PUT /api/notes/:id (Atualizar Nota Criada)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Título foi atualizado com sucesso\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.true;",
+                  "    pm.expect(jsonData.dados.titulo).to.eql(\"Entendendo Middlewares no Express (Revisado)\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Entendendo Middlewares no Express (Revisado)\",\n  \"categoria\": \"Importante\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{notaIdCriada}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{notaIdCriada}}"]
+            },
+            "description": "Atualiza os campos de uma nota existente utilizando o ID salvo na variável de ambiente."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05. Exclusão de Notas (DELETE)",
+      "item": [
+        {
+          "name": "DELETE /api/notes/:id (Excluir Nota Criada)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Confirmação de exclusão recebida\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.sucesso).to.be.true;",
+                  "    pm.expect(jsonData.mensagem).to.include(\"excluída com sucesso\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{notaIdCriada}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{notaIdCriada}}"]
+            },
+            "description": "Exclui a nota temporária criada durante a suíte de testes."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notes/:id (Validar Exclusão - 404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code é 404 Not Found após deleção\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/notes/{{notaIdCriada}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notes", "{{notaIdCriada}}"]
+            },
+            "description": "Garante que o recurso realmente foi removido da base de dados persistente."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

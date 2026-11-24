@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENAI • Frameworks Front-End — Portal de Atividades</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-bold px-2.5 py-1 rounded tracking-wider shadow-sm">SENAI</span>
+        <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Frameworks Front-End</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-medium text-slate-400">
+        <span class="hidden sm:inline">Docente: <strong class="text-slate-200">Prof. Me. Deivison S. Takatu</strong></span>
+        <span class="h-4 w-px bg-slate-800 hidden sm:inline"></span>
+        <span>Aluna: <strong class="text-indigo-400">Letícia Vieira</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-medium mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Repositório 100% Concluído
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Portal de Atividades Práticas
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        Acesse os executáveis imediatos, aplicações SPA em React e documentações técnicas desenvolvidas para a trilha acadêmica de Front-End no SENAI.
+      </p>
+    </div>
+
+    <!-- Grid de Projetos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Aula 07 - Box Model -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Aula 07 • Atividade 01</span>
+            <span class="text-xs text-slate-500">HTML5 + CSS3</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">Box Model & Flexbox Lab</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            20 elementos semanticamente identificados com Content, Padding, Border e Margin explicitamente auditados, além de mais de 20 regras de Flexbox.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./07-Frameworks-CSS/atividade-01-box-model-flexbox/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300">
+            Abrir Aplicação <span>→</span>
+          </a>
+          <a href="./07-Frameworks-CSS/README.md" class="text-xs text-slate-500 hover:text-slate-300">Docs</a>
+        </div>
+      </div>
+
+      <!-- Aula 07 - Tailwind -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Aula 07 • Atividade 02</span>
+            <span class="text-xs text-slate-500">Tailwind CSS</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">DevPulse Analytics Dashboard</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Painel administrativo moderno construído com mais de 54 classes utilitárias do Tailwind CSS, modo escuro/claro e mapeamento para CSS nativo.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./07-Frameworks-CSS/atividade-02-tailwind/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300">
+            Abrir Dashboard <span>→</span>
+          </a>
+          <a href="./07-Frameworks-CSS/atividade-02-tailwind/DOCUMENTACAO_TAILWIND.md" class="text-xs text-slate-500 hover:text-slate-300">Mapeamento</a>
+        </div>
+      </div>
+
+      <!-- Aula 08 - React Fundamentos -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-sky-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Aula 08 • Projeto React</span>
+            <span class="text-xs text-slate-500">React 18</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors mb-2">Catálogo de Fundamentos React</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Aplicação explorando JSX, componentes modulares, props, contador do Virtual DOM, renderização de coleções via map() e renderização condicional.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./08-Projeto-React/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300">
+            Abrir Catálogo <span>→</span>
+          </a>
+          <a href="./08-Projeto-React/README.md" class="text-xs text-slate-500 hover:text-slate-300">Docs</a>
+        </div>
+      </div>
+
+      <!-- Aula 09 - React Avançado SPA -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-emerald-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Aula 09 • Projeto React 02</span>
+            <span class="text-xs text-slate-500">SPA + Router + APIs</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">DevPulse Notes & API Hub</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            SPA em React com useState, formulários controlados, useEffect, rotas com React Router DOM e laboratório assíncrono consumindo APIs REST com fetch.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./09-Projeto-React-02/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300">
+            Abrir SPA <span>→</span>
+          </a>
+          <a href="./09-Projeto-React-02/README.md" class="text-xs text-slate-500 hover:text-slate-300">Docs</a>
+        </div>
+      </div>
+
+      <!-- Aula 01 - Vanilla JS -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-amber-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Aula 01 • Vanilla JS</span>
+            <span class="text-xs text-slate-500">DOM Nativo</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors mb-2">Gerenciador de Notas Vanilla</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Manipulação direta de DOM sem frameworks, variáveis CSS customizadas, modo escuro e persistência local.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./01-Apresentacao-e-Configuracao-Ambiente/atividade-01-vanillajs/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300">
+            Abrir Aplicação <span>→</span>
+          </a>
+          <a href="./01-Apresentacao-e-Configuracao-Ambiente/atividade-02-documentacao/RELATORIO_TECNICO_FRAMEWORKS.md" class="text-xs text-slate-500 hover:text-slate-300">Relatório</a>
+        </div>
+      </div>
+
+      <!-- Aula 03 - Kanban Board -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 hover:border-purple-500/50 transition-all flex flex-col justify-between group shadow-lg">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">Aula 06 • Gestão Ágil</span>
+            <span class="text-xs text-slate-500">Kanban Board</span>
+          </div>
+          <h2 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors mb-2">Kanban Board Interativo</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Quadro interativo com Drag-and-Drop, limites de WIP, indicadores de gargalo e documentação de histórias de usuário em Gherkin.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <a href="./03-Gestao-de-Projetos-FrontEnd/kanban-board/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300">
+            Abrir Kanban <span>→</span>
+          </a>
+          <a href="./03-Gestao-de-Projetos-FrontEnd/GESTAO_PROJETO_AGIL.md" class="text-xs text-slate-500 hover:text-slate-300">Manual Ágil</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Seção de PDFs -->
+    <div class="mt-12 bg-slate-900/50 border border-slate-800/80 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-sm font-bold text-white mb-1">PDFs Oficiais de Referência do Docente</h3>
+        <p class="text-xs text-slate-400">Consulte os slides originais das Aulas 07, 08 e 09 fornecidos pelo SENAI.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="./pdfs/Aula_07_-_Frameworks_CSS.pdf" download class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded border border-slate-700 transition-colors">PDF Aula 07</a>
+        <a href="./pdfs/Aula_08_-_Projeto_React.pdf" download class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded border border-slate-700 transition-colors">PDF Aula 08</a>
+        <a href="./pdfs/Aula_09_-_Projeto_React_02.pdf" download class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded border border-slate-700 transition-colors">PDF Aula 09</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="border-t border-slate-800/80 bg-slate-900/60 py-6 text-center text-xs text-slate-500">
+    <p>Projeto Desenvolvido para a Disciplina de Frameworks Front-End • SENAI • Prof. Me. Deivison S. Takatu</p>
+  </footer>
+
+</body>
+</html>
